@@ -74,11 +74,8 @@ void setup() {
 
      
 }
-  
-// Call the functions to produce a DNA image
-//    frameCount was used to delay displaying a function to produce the rotating DNA effect
-void draw() {
-  background(100);
+
+void printText() {
   fill(253, 178, 255);
   textSize(20);
   text("Adenine", 100, 50);
@@ -88,6 +85,13 @@ void draw() {
   text("Cytosine", 320, 50);
   fill(167, 231, 255);
   text("Guanine", 320, 70);
+}
+  
+// Call the functions to produce a DNA image
+//    frameCount was used to delay displaying a function to produce the rotating DNA effect
+void draw() {
+  background(100);
+  printText();
   purpleBlue.move();
   if (frameCount > 25)
     pinkYellow.move();
