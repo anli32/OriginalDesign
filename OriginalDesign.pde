@@ -1,4 +1,5 @@
 class dna {
+  // Declare variables
   int myx;
   int myy1;
   int myy2;
@@ -11,7 +12,9 @@ class dna {
   int myb2;
   int mymin;
   int mymax;
-  
+ 
+  // Define what makes up the dna object
+  // Initialize variables
   dna(int x, int y1, int y2, int yDir, int r1, int g1, int b1, int r2, int g2, int b2, int min, int max) {
     myx = x;
     myy1 = y1;
@@ -27,6 +30,10 @@ class dna {
     mymax = max;
   }
 
+  // dna.move when called results in the movement of the DNA strands
+  //  A DNA strand is made up of two ellipses and line segments that move constantly in the opposite direction
+  //   Once the ellipses meet in the middle, the line segments will switch sides
+  //     The movement and the changing colors are used to create a rotating effect
   void move() {
     if (myy1 > mymax || myy1 < mymin) {
      myyDir = -(myyDir); 
@@ -37,6 +44,7 @@ class dna {
     line(myx, 250, myx, myy2);
     strokeWeight(5);
     noStroke();
+    fill(255);
     ellipse(myx, myy1, 20, 20);
     ellipse(myx, myy2, 20, 20);
     myy1 = myy1 + myyDir;
@@ -44,6 +52,12 @@ class dna {
   }
 }
 
+// Create new objects using the class dna
+//    A DNA strand is created by defining its x - coordinate, 
+//                                            starting y - coordinates, 
+//                                            the amount of change to the y-values, 
+//                                            colors, 
+//                                            and the boundaries for the y-values
 dna purpleBlue, purpleBlue1, purpleBlue2, pinkYellow, pinkYellow1, bluePurple, bluePurple1, yellowPink, yellowPink1;
 void setup() {
    size(520, 500);  
@@ -61,8 +75,19 @@ void setup() {
      
 }
   
+// Call the functions to produce a DNA image
+//    frameCount was used to delay displaying a function to produce the rotating DNA effect
 void draw() {
   background(100);
+  fill(253, 178, 255);
+  textSize(20);
+  text("Adenine", 100, 50);
+  fill(252, 239, 164);
+  text("Thymine", 100, 70);
+  fill(194, 130, 237);
+  text("Cytosine", 320, 50);
+  fill(167, 231, 255);
+  text("Guanine", 320, 70);
   purpleBlue.move();
   if (frameCount > 25)
     pinkYellow.move();
@@ -81,5 +106,3 @@ void draw() {
   if (frameCount > 200)
     purpleBlue2.move();
 }
-
-
